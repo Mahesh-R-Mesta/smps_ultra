@@ -2,8 +2,11 @@ import schedule
 from datetime import datetime
 import os
 import json
+
+
+
 def birth_day():
-    with open(os.path.join('/data/birthday.json'),'r') as file:
+    with open(os.getcwd()+"//data//birthday.json",'r') as file:
         data = json.loads(file.read())
         today = datetime.now()
         for birthday in data['birthday']:
@@ -13,4 +16,8 @@ def birth_day():
 
 
 
-schedule.every().at("9:00").do(birth_day)
+print(birth_day())
+
+
+
+# schedule.every().at("9:00").do(birth_day)
