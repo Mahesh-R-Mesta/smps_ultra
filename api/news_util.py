@@ -14,13 +14,10 @@ class NewsApi():
         if data !=None:     
             return data
     def weather(self,location="sirsi"):
-        data = self.client.get(URL.weather.join(location))
+        data = self.client.get(f'{URL.weather}{location}')
         if data !=None:
             return data
-    def jokes(self):
-        data = self.client.get(URL.jokes)
-        if data !=None:
-            return data
+ 
     
 
 
