@@ -24,6 +24,7 @@ class InstaApi():
     def get_posts(self,count=5):
         i=0
         for post in  self.user.get_posts():
+            
             self.loader.download_post(post,target=self.path)
             i+=1
             if i > count:
