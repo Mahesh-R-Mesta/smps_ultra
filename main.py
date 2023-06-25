@@ -4,5 +4,5 @@ import services.scheduler
 config = load_dotenv(".env")
 news = NewsApi()
 
-print(news.in_short('politics'))
+# print(news.in_short('politics'))
 print(news.space_flight())
