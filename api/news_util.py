@@ -14,9 +14,10 @@ class NewsApi():
            return data
     def space_flight(self):
         data = self.client.get(URL.space_news)
+        print(data)
         if data !=None:
             self.tft.clear_display()
-            self.tft.text(str(data),font=FontSize.s300,color=Colors.blue)
+            self.tft.text(str(data),font=FontSize.s200,color=Colors.blue)
             self.tft.show()    
             return data
     def weather(self,location="sirsi"):
