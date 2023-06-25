@@ -1,6 +1,6 @@
 import time
 import subprocess
-import digitalio
+import digitalio 
 import board
 from PIL import Image, ImageDraw, ImageFont
 from constant.font_constant import FontSize
@@ -24,7 +24,7 @@ class TFTDisplay(object):
         self.spi = board.SPI()
         self.display = st7735.ST7735R(
             self.spi,
-            rotation=90,
+            rotation=270,
             cs=cs_pin,
             dc=dc_pin,
             rst=reset_pin,
@@ -45,16 +45,15 @@ class TFTDisplay(object):
     def show(self):
         self.display.image(self.image)
     
-    def text(self,value,x,y,font=FontSize.s300,color=Colors.white):
-        if x ==None:
-            x = self.x
-        if y ==None:
-            y = self.y
+    def text(self,value,font=FontSize.s300,color=Colors.white):
+        x = self.x
+        y = self.y
         self.window.text((x, y), value, font=font, fill=color)
         self.y+= font.getsize(value)[1]
         
     def draw_image(self,path="test.jpg"):
         self.img= Image.open(path)
+        self.img = self.img.convert("RGB")
         self.image_ratio = self.img.width / self.img.height
         self.screen_ratio = self.width / self.height
         if self.screen_ratio < self.image_ratio:
@@ -63,7 +62,7 @@ class TFTDisplay(object):
         else:
             self.scaled_width = self.width
             self.scaled_height = self.img.height * self.width // self.img.width
-            self.image = self.img.resize((160,128),Image.BICUBIC)
+            self.image = self.img.resize((160,128),Image.BILINEAR)
     
     
         
