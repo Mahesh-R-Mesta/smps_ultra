@@ -5,7 +5,7 @@ import board
 from PIL import Image, ImageDraw, ImageFont
 from constant.font_constant import FontSize
 from constant.color_constant import Colors
-from lib.adafruit_rgb_display import st7735
+from adafruit_rgb_display import st7735
 
 cs_pin = digitalio.DigitalInOut(board.CE0)
 dc_pin = digitalio.DigitalInOut(board.D25)
